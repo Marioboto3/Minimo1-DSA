@@ -4,21 +4,26 @@ import edu.upc.dsa.util.RandomUtils;
 
 public class Track {
 
+    //atributos
+
     String id;
     String title;
     String singer;
     static int lastId;
 
+    //constructor vacío
     public Track() {
         this.id = RandomUtils.getId();
     }
 
+    //constructores
     public Track(String title, String singer) {
         this();
         this.setSinger(singer);
         this.setTitle(title);
     }
 
+    //getters y setters
     public String getId() {
         return this.id;
     }
@@ -26,7 +31,6 @@ public class Track {
     public void setId(String id) {
         this.id=id;
     }
-
 
     public String getTitle() {
         return title;
