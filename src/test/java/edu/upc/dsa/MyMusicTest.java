@@ -62,15 +62,7 @@ public class MyMusicTest {
         Play play = this.mm.addPlay("Vida","a1","Perecer",3,"play1");
         this.mm.addPlaytoPlaylist(play,"mariosanchez","playlist1");
         List<Play> lista = this.mm.llistatPlaylist(playlist1);
-        Play playCopia = null;
-        for (Play p : lista)
-        {
-            if(p.getId().equals(play))
-            {
-                playCopia=play;
-            }
-        }
-        Assert.assertEquals("Vida",play.getTitulo());
+        Assert.assertEquals(1,lista.size());
     }
 
 }

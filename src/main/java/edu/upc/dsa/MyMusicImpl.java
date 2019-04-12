@@ -39,10 +39,13 @@ public class MyMusicImpl implements MyMusic {
             Artista a = this.findbyIdArtista(idArtista);
             if (a==null)
             {
+                logger.info("artista no encontrado ");
+
                 return null;
             }
             p = new Play(titulo, a.getNombre(), album, duracion, id);
             this.plays.put(id, p);
+            logger.info("new Play " + p);
             return p;
         }
         //excepcion
@@ -55,8 +58,12 @@ public class MyMusicImpl implements MyMusic {
         if ( usuario == null){
             usuario = new Usuario(nombre, apellido, id);
             this.usuarios.put(id,usuario);
+            logger.info("new usuario " + usuario);
+
             return usuario;
         }
+        logger.info("usuario no encontrado ");
+
         return null;
     }
 
@@ -66,8 +73,10 @@ public class MyMusicImpl implements MyMusic {
         Playlist playlist = u.getPlaylist(idPlaylist);
         if (u!=null && playlist!=null){
             playlist.addPlay(p);
+            logger.info("new play " + p);
+
         }
-        //excepcion
+        logger.info("playlist or usuario no encontrados " );
     }
 
     @Override
@@ -76,8 +85,12 @@ public class MyMusicImpl implements MyMusic {
         if (p==null){
             p = new Playlist(idPlaylist, titulo, idUsuario);
             this.usuarios.get(idUsuario).addPlaylist(p);
+            logger.info("new Playlist " + p);
+
             return p;
         }
+        logger.info("Playlist no encontrado " );
+
         return null;
     }
 
@@ -88,14 +101,19 @@ public class MyMusicImpl implements MyMusic {
         {
             artista = new Artista(id, nombre);
             this.artistas.add(artista);
+            logger.info("new artista " + artista);
             return artista;
         }
+        logger.info("artista no encontrado");
+
         return null;
     }
 
     @Override
     public List<Artista> artistasMyMusic() {
         List<Artista> lista = this.artistas;
+        logger.info("lista artistas " + lista);
+
         return lista;
     }
 
@@ -104,11 +122,15 @@ public class MyMusicImpl implements MyMusic {
         Playlist playlist = this.findByIdPlaylist(p.getId(), p.getIdUsuario());
         if(playlist==null)
         {
+            logger.info("playlist no encontrado");
+
             return null;
-            //excepcion
+
         }
         else{
             playlist.setTitulo(titulo);
+            logger.info("new titulo " + titulo);
+
             return playlist;
         }
     }
@@ -118,8 +140,12 @@ public class MyMusicImpl implements MyMusic {
         Playlist p = this.findByIdPlaylist(playlist.getId(), playlist.getIdUsuario());
         if(p!=null) {
             List<Play> listaPlay = p.getListaPlays();
+            logger.info("listaplays"+ listaPlay);
+
             return listaPlay;
         }
+        logger.info("not created");
+
         return null;
 
     }
@@ -128,6 +154,8 @@ public class MyMusicImpl implements MyMusic {
     public Playlist findByIdPlaylist(String idPlaylist, String idUsuario) {
         Playlist p = this.usuarios.get(idUsuario).getPlaylist(idPlaylist);
         if (p==null) {
+            logger.info("not found");
+
             return null;
         }
         return p;
@@ -137,8 +165,10 @@ public class MyMusicImpl implements MyMusic {
     public Play findbyIdPlay(String idPlay) {
         Play p = this.plays.get(idPlay);
         if(p==null) {
+            logger.info("not found");
             return null;
         }
+        logger.info("encontrado"+p);
         return p;
     }
 
@@ -147,9 +177,13 @@ public class MyMusicImpl implements MyMusic {
         for (Artista a : this.artistas)
         {
             if(a.getId().equals(idArtista)){
+                logger.info("encontrado"+a);
+
+
                 return a;
             }
         }
+        logger.info("not found");
         return null;
     }
 
@@ -157,8 +191,11 @@ public class MyMusicImpl implements MyMusic {
     public Usuario findByIdUsuario(String idUsuario) {
         Usuario usuario = this.usuarios.get(idUsuario);
         if(usuario==null){
+            logger.info("not found");
             return null;
         }
+        logger.info("encontrado"+usuario);
+
         return usuario;
     }
 
