@@ -27,7 +27,6 @@ public class TracksManagerImpl implements TracksManager {
     public int size() {
         int ret = this.tracks.size();
         logger.info("size " + ret);
-
         return ret;
     }
 
