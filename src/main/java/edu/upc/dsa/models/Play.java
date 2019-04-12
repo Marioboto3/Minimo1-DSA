@@ -6,14 +6,14 @@ public class Play {
     private String artista;
     private String album;
     private double duracion;
-    private String idPlaylist;
+    private String id;
 
-    public Play(String titulo, String artista, String album, double duracion, String idPlaylist) {
+    public Play(String titulo, String artista, String album, double duracion, String id) {
         this.titulo = titulo;
         this.artista = artista;
         this.album = album;
         this.duracion = duracion;
-        this.idPlaylist=idPlaylist;
+        this.id=id;
     }
 
     public Play() {
@@ -31,8 +31,8 @@ public class Play {
         return album;
     }
 
-    public String getIdPlaylist() {
-        return idPlaylist;
+    public String getId() {
+        return id;
     }
 
     public double getDuracion() {
@@ -51,8 +51,8 @@ public class Play {
         this.album = album;
     }
 
-    public void setIdPlaylist(String idPlaylist) {
-        this.idPlaylist = idPlaylist;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setDuracion(double duracion) {

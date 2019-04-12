@@ -3,6 +3,7 @@ package edu.upc.dsa.services;
 
 import edu.upc.dsa.TracksManager;
 import edu.upc.dsa.TracksManagerImpl;
+import edu.upc.dsa.models.Playlist;
 import edu.upc.dsa.models.Track;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,6 +45,7 @@ public class TracksService {
         return Response.status(201).entity(entity).build()  ;
 
     }
+
 
 
 }
