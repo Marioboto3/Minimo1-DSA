@@ -35,6 +35,10 @@ public class PlayListService {
             this.mm.addPlaylist("playlist1","Aprobado","mariosanchez");
 
             this.mm.addPlay("Play1","artista1","verte",2,"play1");
+
+            Play p = this.mm.findbyIdPlay("play1");
+
+            this.mm.addPlaytoPlaylist(p,"mariosanchez","playlist1");
         }
     }
     @POST
@@ -86,6 +90,7 @@ public class PlayListService {
     public Response getPlaysPlaylist(@PathParam("idPlaylist") String idPlaylist,@PathParam("idUsuario") String idUsuario) {
 
         Playlist p = this.mm.findByIdPlaylist(idPlaylist,idUsuario);
+
         if(p==null)
         {
             return Response.status(404).build();
@@ -95,6 +100,7 @@ public class PlayListService {
         {
             return Response.status(405).build();
         }
+
         GenericEntity<List<Play>> entity = new GenericEntity<List<Play>>(plays) {};
         return Response.status(201).entity(entity).build()  ;
 
